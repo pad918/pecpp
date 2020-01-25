@@ -19,7 +19,7 @@ namespace wm
     public:
         Button(sf::Vector2f pos, sf::Vector2f size, int returnVal, std::string text, sf::Font &font);
         void render(sf::RenderWindow &window);
-        int update(bool hasClicked, sf::Vector2f mousePos);
+        std::string update(bool hasClicked, sf::Vector2i mousePos);
         void setPosition();
     };
 } // namespace wm

@@ -24,17 +24,21 @@ void wm::Button::render(sf::RenderWindow &window){
     window.draw(bttn_text_obj);
 }
 
-int wm::Button::update(bool hasClicked, sf::Vector2f mousePos){ // Retrun value is used to chek if and which button has been pressed
+std::string wm::Button::update(bool hasClicked, sf::Vector2i mousePos){ // Retrun value is used to chek if and which button has been pressed
     if(!hasClicked) 
-        return -1;
+        return "";
     else{
-        if(mousePos.x > bttn_pos.x && mousePos.x > bttn_pos.x + bttn_size.x){
-            if(mousePos.y > bttn_pos.y && mousePos.y > bttn_pos.y + bttn_size.y){
-                return valueToReturn;
+        /*std::cout << "PROPS = " << mousePos.x << " " << mousePos.y << " " << bttn_pos.x << " " 
+        << bttn_pos.y << " " << bttn_pos.x+bttn_size.x << " " << bttn_pos.y+bttn_size.y << 
+        std::endl;
+        */
+       if(mousePos.x > bttn_pos.x && mousePos.x < bttn_pos.x + bttn_size.x){
+            if(mousePos.y > bttn_pos.y && mousePos.y < bttn_pos.y + bttn_size.y){
+                return bttn_text;
             }
         }
     }
-    return -1;
+    return "";
 }
 void wm::Button::setPosition(){
 

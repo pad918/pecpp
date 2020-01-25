@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>//test
 #include "Button.h" 
+#include "UIhandler.h"
 
 sf::Vector2f windowSize;
 
@@ -13,7 +14,8 @@ int main(){
 
 	windowSize.x = 1280/2; windowSize.y = 720/2;
 	sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), "THEGAME");
-	wm::Button btn(sf::Vector2f(100,100), sf::Vector2f(50,20),0, "Title", MAIN_FONT);
+	//wm::Button btn(sf::Vector2f(100,100), sf::Vector2f(50,20),0, "Title", MAIN_FONT);
+	wm::UIhandler UI(MAIN_FONT);
 	sf::View view1(sf::FloatRect(0.f, 0.f, 1280.f, 720.f));
     window.setView(view1);
 
@@ -31,6 +33,9 @@ int main(){
 				break;
 			case sf::Event::KeyPressed:
 				break;
+			case sf::Event::MouseButtonReleased:
+				UI.testForClick(sf::Mouse::getPosition(window)); 
+				break;
 			default:
 				break;
 			}
@@ -42,7 +47,7 @@ int main(){
 		window.setView(view1);
 		window.clear();
 		//Drawing loop
-		btn.render(window);
+		UI.render(window);
 		//Display to window
 		window.display();
 	}
