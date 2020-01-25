@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Button.h"
+#include "Canvas.h"
 
 wm::UIhandler::UIhandler(sf::Font &FONT){
     std::cout << "created uihandler object" << std::endl;
@@ -18,20 +19,22 @@ void wm::UIhandler::render(sf::RenderWindow &window){
     }
 }
 
-void wm::UIhandler::testForClick(sf::Vector2i mousePos){
+void wm::UIhandler::testForClick(sf::Vector2i mousePos, Canvas &canvas){
     for(int i=0; i<buttons.size();i++){
         std::string btnText=buttons[i].update(true, mousePos);
         if(btnText!=""){
-            buttonActions(btnText);
+            buttonActions(btnText, canvas);
             break; // Makes shure only one button registers as beeing pressed (Stacked buttons)
         }
     }
 }
 
 //Button actions are made here
-void wm::UIhandler::buttonActions(std::string btnName){
-    if(btnName=="File")
-        std::cout << "Clicked file btn" << std::endl;
+void wm::UIhandler::buttonActions(std::string btnName, Canvas &canvas){
+    if(btnName=="File"){
+        canvas.test+=10;
+        std::cout << "Clicked file btn" << " Test = " << canvas.test << std::endl;
+    }
     else if(btnName == "Edit")
         std::cout << "Clicked edit btn" << std::endl;
     else

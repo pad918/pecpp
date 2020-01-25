@@ -28,10 +28,6 @@ std::string wm::Button::update(bool hasClicked, sf::Vector2i mousePos){ // Retru
     if(!hasClicked) 
         return "";
     else{
-        /*std::cout << "PROPS = " << mousePos.x << " " << mousePos.y << " " << bttn_pos.x << " " 
-        << bttn_pos.y << " " << bttn_pos.x+bttn_size.x << " " << bttn_pos.y+bttn_size.y << 
-        std::endl;
-        */
        if(mousePos.x > bttn_pos.x && mousePos.x < bttn_pos.x + bttn_size.x){
             if(mousePos.y > bttn_pos.y && mousePos.y < bttn_pos.y + bttn_size.y){
                 return bttn_text;

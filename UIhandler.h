@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Button.h"
+#include "Canvas.h"
 
 namespace wm{
     
@@ -10,11 +11,11 @@ namespace wm{
     private:
         std::vector<wm::Button> buttons;
         sf::Font MAIN_FONT;
-        void buttonActions(std::string btnName);
+        void buttonActions(std::string btnName, Canvas &canvas);
     public:
         UIhandler(sf::Font &FONT);
         void render(sf::RenderWindow &window);
-        void testForClick(sf::Vector2i mousePos);
+        void testForClick(sf::Vector2i mousePos, Canvas &canvas);
     };
 
 

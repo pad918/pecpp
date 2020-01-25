@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>//test
 #include "Button.h" 
 #include "UIhandler.h"
+#include "Canvas.h"
 
 sf::Vector2f windowSize;
 
@@ -11,7 +12,7 @@ int main(){
 	{
 		std::cout << "Could not load font" << std::endl;
 	}
-
+	wm::Canvas canvas(sf::Vector2i(100,100));
 	windowSize.x = 1280/2; windowSize.y = 720/2;
 	sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), "THEGAME");
 	//wm::Button btn(sf::Vector2f(100,100), sf::Vector2f(50,20),0, "Title", MAIN_FONT);
@@ -34,7 +35,7 @@ int main(){
 			case sf::Event::KeyPressed:
 				break;
 			case sf::Event::MouseButtonReleased:
-				UI.testForClick(sf::Mouse::getPosition(window)); 
+				UI.testForClick(sf::Mouse::getPosition(window), canvas); 
 				break;
 			default:
 				break;
@@ -48,6 +49,7 @@ int main(){
 		window.clear();
 		//Drawing loop
 		UI.render(window);
+		canvas.render(window);
 		//Display to window
 		window.display();
 	}
